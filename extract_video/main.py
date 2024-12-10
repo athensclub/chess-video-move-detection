@@ -1,7 +1,6 @@
 import cv2
 import numpy as np
 from skimage.metrics import structural_similarity as ssim
-from google.colab.patches import cv2_imshow
 
 def extract_unique_frames(video_path, frame_rate=1, threshold=0.95):
     """
@@ -65,18 +64,6 @@ def extract_unique_frames(video_path, frame_rate=1, threshold=0.95):
     print("Unique frame extraction completed!")
     return unique_frames
 
-def display_frames_colab(frames, delay=1000):
-    """
-    Display all frames in a list for Google Colab.
-
-    Parameters:
-        frames (list): List of frames (as numpy arrays) to display.
-        delay (int): Time in milliseconds to display each frame (default: 1000 ms).
-    """
-    for i, frame in enumerate(frames):
-        print(f"Displaying frame {i + 1}/{len(frames)}")
-        cv2_imshow(frame)
-        cv2.waitKey(delay)  # Delay to simulate timing, though not visible in Colab
 
 def main(video_path, frame_rate=1, threshold=0.65):
     # Usage
@@ -93,3 +80,13 @@ def main(video_path, frame_rate=1, threshold=0.65):
     #     print("No unique frames to display.")
 
     return unique_frames
+
+if __name__ == "__main__":
+    # read video path from args
+    import argparse
+    parser = argparse.ArgumentParser(description="Extract unique frames from a video.")
+    parser.add_argument("video_path", type=str, help="Path to the input video file.")
+    args = parser.parse_args()
+
+    video_path = args.video_path
+    unique_frames = main(video_path)

@@ -55,6 +55,8 @@ class ChessRecognizer:
         Args:
             classifiers_folder (Path, optional): the path to the classifiers (supplying a different path is especially useful because the transfer learning classifiers are located at ``models://transfer_learning``). Defaults to ``models://``.
         """
+        print("path", URI("config://corner_detection.yaml"))
+
         self._corner_detection_cfg = CN.load_yaml_with_base(
             "config://corner_detection.yaml")
 
