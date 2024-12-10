@@ -11,12 +11,14 @@ def predict_state(frame, idx):
     print('predicting frame', idx+1)
     img = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     board, *_ = recognizer.predict(img, chess.BLACK)
-    return board.fen()
+    return board.board_fen()
 
 def extract_moves(video_path):
     frames = extract_unique_frames(video_path, frame_rate=1, threshold=0.95)
     fens = [predict_state(frame, idx) for idx, frame in enumerate(frames)]
-    print(analysis_move(fens))
+    for idx, fen in enumerate(fens):
+        print( f"Frame {idx+1}: https://lichess.org/editor/{fen}")
+    print('moves',analysis_move(fens))
 
 
 if __name__ == "__main__":
