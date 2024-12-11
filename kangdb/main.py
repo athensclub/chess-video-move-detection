@@ -19,10 +19,10 @@ def extract_moves(video_path, name):
     fens = [predict_state(frame, idx) for idx, frame in enumerate(frames)]
     for idx, fen in enumerate(fens):
         print( f"Frame {idx+1}: https://lichess.org/editor/{fen}")
-    # moves = analysis_move(fens)
-    # print('moves', moves)
-    # return moves
-    return str(fens)
+    moves = analysis_move(fens)
+    print('moves', moves)
+    return moves
+    # return str(fens)
 
 
 if __name__ == "__main__":
