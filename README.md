@@ -18,3 +18,6 @@ python -m kangdb.main
 ```
 
 Based on [Chesscog Paper](https://georg.woelflein.eu/chesscog/index.html#)
+
+![สีม่วง สีขาว  ทางการ เรียบง่าย งานวิจัย เทคโนโลยี โปสเตอร์](https://github.com/user-attachments/assets/7019468f-d531-4783-80ec-0220b5f4de87)
+
