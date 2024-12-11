@@ -3,7 +3,7 @@ import numpy as np
 import os
 from skimage.metrics import structural_similarity as ssim
 
-def extract_unique_frames(video_path, frame_rate=3, threshold=0.97):
+def extract_unique_frames(video_path, name, frame_rate=1, threshold=0.80):
     """
     Extract one frame per second from a video, keeping only frames that differ significantly from the previous frame.
 
@@ -55,10 +55,12 @@ def extract_unique_frames(video_path, frame_rate=3, threshold=0.97):
             
             # Append the frame to the list of unique frames
             unique_frames.append(frame)
-            print(f"Stored frame {len(unique_frames)} at {frame_count / fps:.2f} seconds")
 
-            output_file = os.path.join("C:/Users/Athens/Downloads/frames", f"frame_{len(unique_frames):04d}.png")
-            cv2.imwrite(output_file, frame)
+            # if not os.path.exists(f"C:/Users/Athens/Downloads/frames/{name}"): 
+            #     os.makedirs(f"C:/Users/Athens/Downloads/frames/{name}")
+            # output_file = os.path.join(f"C:/Users/Athens/Downloads/frames/{name}", f"frame_{len(unique_frames):04d}.png")
+            # cv2.imwrite(output_file, frame)
+            print(f"Stored frame {len(unique_frames)} at {frame_count / fps:.2f} seconds")
             
             # Update the previous frame
             prev_frame = gray_frame
