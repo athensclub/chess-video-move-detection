@@ -155,10 +155,14 @@ def get_move(frame_a, frame_b, point_a, point_b):
 
     if frame_a[point_b[0]][point_b[1]] != ' ':
         if frame_a[point_a[0]][point_a[1]] == "p" or frame_a[point_a[0]][point_a[1]] == "P":
+            if move[0] > 'A' and move[0] < 'Z':
+                move = move[1:]
             move = cols[point_a[1]] + "x" + move
             if move[0] == move[2]:
                 move = move[:2] + move[3:]
         else:
+            if move[0] > 'A' and move[0] < 'Z':
+                move = move[1:]
             move = frame_a[point_a[0]][point_a[1]].upper() + "x" + move
             if move[0] == move[2]:
                 move = move[:2] + move[3:]
